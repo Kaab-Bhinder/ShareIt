@@ -35,13 +35,13 @@ export default function ProfileDropdown() {
       {/* Profile Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-3 p-1.5 rounded-full hover:bg-[#28587B]/30 transition"
+        className="flex items-center gap-3 p-1.5 rounded-full hover:bg-primary-surface-light/30 transition"
       >
-        <div className="w-10 h-10 bg-gradient-to-br from-[#7F7CAF] to-[#28587B] rounded-full flex items-center justify-center shadow-lg border-2 border-[#7F7CAF]/30">
+        <div className="w-10 h-10 bg-gradient-to-br from-primary-400 to-primary-surface-light rounded-full flex items-center justify-center shadow-lg border-2 border-[#4ade80]/30">
           <span className="text-white font-semibold text-sm">{initials}</span>
         </div>
         <svg
-          className={`w-4 h-4 text-[#9FB4C7] transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`w-4 h-4 text-muted transition-transform ${isOpen ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -52,16 +52,16 @@ export default function ProfileDropdown() {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-[#0f2530] border border-[#28587B]/50 rounded-2xl shadow-2xl overflow-hidden z-50">
+        <div className="absolute right-0 mt-2 w-64 bg-[#0f2530] border border-primary-surface-light/50 rounded-2xl shadow-2xl overflow-hidden z-50">
           {/* User Info */}
-          <div className="p-4 border-b border-[#28587B]/30">
+          <div className="p-4 border-b border-primary-surface-light/30">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#7F7CAF] to-[#28587B] rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-surface-light rounded-full flex items-center justify-center">
                 <span className="text-white font-semibold">{initials}</span>
               </div>
               <div>
-                <p className="text-[#EEEEFF] font-semibold">{user.full_name}</p>
-                <p className="text-[#9FB4C7] text-sm">{user.email}</p>
+                <p className="text-white font-semibold">{user.full_name}</p>
+                <p className="text-muted text-sm">{user.email}</p>
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function ProfileDropdown() {
             <Link
               href="/dashboard"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-4 py-3 text-[#9FB4C7] hover:text-[#EEEEFF] hover:bg-[#28587B]/20 rounded-xl transition"
+              className="flex items-center gap-3 px-4 py-3 text-muted hover:text-white hover:bg-primary-surface-light/20 rounded-xl transition"
             >
               <span className="text-xl">📊</span>
               <span>Dashboard</span>
@@ -80,7 +80,7 @@ export default function ProfileDropdown() {
             <Link
               href="/dashboard/wallet"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-4 py-3 text-[#9FB4C7] hover:text-[#EEEEFF] hover:bg-[#28587B]/20 rounded-xl transition"
+              className="flex items-center gap-3 px-4 py-3 text-muted hover:text-white hover:bg-primary-surface-light/20 rounded-xl transition"
             >
               <span className="text-xl">💰</span>
               <span>Wallet</span>
@@ -89,13 +89,13 @@ export default function ProfileDropdown() {
             <Link
               href="/dashboard/bookings"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-4 py-3 text-[#9FB4C7] hover:text-[#EEEEFF] hover:bg-[#28587B]/20 rounded-xl transition"
+              className="flex items-center gap-3 px-4 py-3 text-muted hover:text-white hover:bg-primary-surface-light/20 rounded-xl transition"
             >
               <span className="text-xl">📋</span>
               <span>My Bookings</span>
             </Link>
 
-            <div className="border-t border-[#28587B]/30 my-2" />
+            <div className="border-t border-primary-surface-light/30 my-2" />
 
             <button
               onClick={() => {

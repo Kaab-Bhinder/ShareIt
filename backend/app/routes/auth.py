@@ -204,3 +204,39 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
         "token_type": "bearer",
         "user": db_user
     }
+
+
+# ============ User Management Endpoints ============
+
+@router.get("/users", response_model=list[UserResponse])
+def get_all_users(db: Session = Depends(get_db)):
+    """
+    Get all users (admin only)
+    """
+    users = db.query(User).all()
+    return users
+
+
+@router.get("/users/{user_id}", response_model=UserResponse)
+def get_user(user_id: int, db: Session = Depends(get_db)):
+    """
+    Get a specific user by ID
+    """
+    user = db.query(User).filter(User.user_id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    return user
+
+
+@router.delete("/users/{user_id}")
+def delete_user(user_id: int, db: Session = Depends(get_db)):
+    """
+    Delete a user (admin only)
+    """
+    user = db.query(User).filter(User.user_id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    
+    db.delete(user)
+    db.commit()
+    return {"message": "User deleted successfully"}

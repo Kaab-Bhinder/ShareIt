@@ -1,108 +1,348 @@
 @import "tailwindcss";
 
+/* ============================================
+   Spotify-Inspired Theme (Modern, High Contrast)
+   ============================================ */
 @theme {
-  /* Your Custom Color Palette */
-  
-  /* Lavender - Light backgrounds, hover states */
-  --color-lavender: #EEEEFF;
-  --color-lavender-50: #f8f8ff;
-  --color-lavender-100: #EEEEFF;
-  --color-lavender-200: #e0e0ff;
-  
-  /* Lavender Grey - Primary brand color */
-  --color-primary: #7F7CAF;
-  --color-primary-light: #9995c4;
-  --color-primary-dark: #6a679a;
-  --color-primary-50: #f0f0f8;
-  --color-primary-100: #e0e0f0;
-  --color-primary-200: #c5c3de;
-  --color-primary-300: #a8a5c9;
-  --color-primary-400: #9995c4;
-  --color-primary-500: #7F7CAF;
-  --color-primary-600: #6a679a;
-  --color-primary-700: #565485;
-  --color-primary-800: #434170;
-  --color-primary-900: #31305c;
-  
-  /* Powder Blue - Secondary color, cards */
-  --color-secondary: #9FB4C7;
-  --color-secondary-light: #b8c9d8;
-  --color-secondary-dark: #869fb6;
-  --color-secondary-50: #f5f8fa;
-  --color-secondary-100: #e8eef3;
-  --color-secondary-200: #d1dde6;
-  --color-secondary-300: #b8c9d8;
-  --color-secondary-400: #9FB4C7;
-  --color-secondary-500: #869fb6;
-  --color-secondary-600: #6d8aa5;
-  --color-secondary-700: #577594;
-  --color-secondary-800: #446083;
-  --color-secondary-900: #334b72;
-  
-  /* Baltic Blue - Accent, CTAs, important elements */
-  --color-accent: #28587B;
-  --color-accent-light: #3a6d91;
-  --color-accent-dark: #1d4560;
-  --color-accent-50: #e8f1f7;
-  --color-accent-100: #d1e3ef;
-  --color-accent-200: #a3c7df;
-  --color-accent-300: #75abcf;
-  --color-accent-400: #478fbf;
-  --color-accent-500: #28587B;
-  --color-accent-600: #1d4560;
-  --color-accent-700: #163548;
-  --color-accent-800: #0f2530;
-  --color-accent-900: #081518;
-  
-  /* Muted Teal - Success states, highlights */
-  --color-teal: #9FB798;
-  --color-teal-light: #b3c7ad;
-  --color-teal-dark: #8aa782;
-  --color-teal-500: #9FB798;
-  
-  /* Surface Colors - Based on palette */
-  --color-surface-50: #f8f9fc;
-  --color-surface-100: #EEEEFF;
-  --color-surface-200: #d8dce8;
-  --color-surface-300: #9FB4C7;
-  --color-surface-400: #7F7CAF;
-  --color-surface-500: #28587B;
-  --color-surface-600: #1d4560;
-  --color-surface-700: #163548;
-  --color-surface-800: #0f2530;
-  --color-surface-900: #0a1a22;
-  --color-surface-950: #061018;
-  
-  /* Text Colors */
-  --color-text-primary: #0f2530;
-  --color-text-secondary: #28587B;
-  --color-text-muted: #6d8aa5;
-  --color-text-light: #EEEEFF;
-  
-  /* Status Colors */
-  --color-success: #9FB798;
-  --color-error: #c75050;
-  --color-warning: #d4a84b;
+  /* ===== Base Surfaces (Neutral, Not Green) ===== */
+  --color-surface-950: #0b0f14;   /* App background */
+  --color-surface-900: #12161d;   /* Main panels */
+  --color-surface-800: #181e27;   /* Cards */
+  --color-surface-700: #1f2632;   /* Elevated */
+  --color-surface-border: #2a3242;
+
+  /* ===== Text ===== */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b3b8c4;
+  --color-text-muted: #7c8497;
+
+  /* ===== Spotify-Green Accent ===== */
+  --color-primary-400: #1ed760; /* Spotify green */
+  --color-primary-500: #1db954;
+  --color-primary-600: #17a34a;
+
+  /* ===== Status ===== */
+  --color-success: #1ed760;
+  --color-warning: #facc15;
+  --color-error: #ef4444;
+  --color-info: #38bdf8;
+
+  /* ===== Gradients ===== */
+  --gradient-surface: linear-gradient(
+    180deg,
+    #0b0f14 0%,
+    #12161d 60%,
+    #181e27 100%
+  );
 }
 
+/* ============================================
+   Components
+   ============================================ */
+@layer components {
+  /* ===== Buttons ===== */
+  .btn-primary {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-primary-500);
+    color: #000;
+    font-weight: 700;
+    border-radius: 9999px;
+    transition: all 200ms;
+    box-shadow: 0 10px 15px -3px rgb(29 185 84 / 0.3);
+    width: 100%;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-400);
+    box-shadow: 0 20px 25px -5px rgb(29 185 84 / 0.5);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.95);
+  }
+
+  .btn-secondary {
+    padding: 0.75rem 1.25rem;
+    background-color: var(--color-surface-800);
+    color: #fff;
+    font-weight: 500;
+    border-radius: 9999px;
+    border: 1px solid var(--color-surface-border);
+    transition: all 200ms;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-surface-700);
+    border-color: rgb(30 215 96 / 0.5);
+  }
+
+  .btn-secondary:active {
+    transform: scale(0.95);
+  }
+
+  .btn-ghost {
+    padding: 0.5rem 1rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    transition: color 200ms;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-ghost:hover {
+    color: var(--color-primary-400);
+  }
+
+  .btn-disabled {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-surface-700);
+    color: var(--color-text-muted);
+    border-radius: 9999px;
+    cursor: not-allowed;
+    opacity: 0.6;
+    width: 100%;
+    font-weight: 700;
+    border: none;
+  }
+
+  /* ===== Cards ===== */
+  .card {
+    background-color: var(--color-surface-800);
+    border-radius: 1rem;
+    border: 1px solid var(--color-surface-border);
+    padding: 1.5rem;
+    transition: all 300ms;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-hover {
+    background-color: var(--color-surface-800);
+    border-radius: 1rem;
+    border: 1px solid var(--color-surface-border);
+    padding: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 300ms;
+  }
+
+  .card-hover:hover {
+    background-color: var(--color-surface-700);
+    transform: translateY(-0.5rem);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    border-color: rgb(30 215 96 / 0.5);
+  }
+
+  /* Product Card Specific */
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--color-surface-800);
+    border-radius: 1rem;
+    border: 1px solid var(--color-surface-border);
+    padding: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 300ms;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-card:hover {
+    background-color: var(--color-surface-700);
+    transform: translateY(-0.5rem);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    border-color: rgb(30 215 96 / 0.5);
+  }
+
+  .product-card-image {
+    height: 12rem;
+    background-color: var(--color-surface-900);
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    transition: transform 300ms;
+  }
+
+  .product-card:hover .product-card-image {
+    transform: scale(1.05);
+  }
+
+  .product-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+    transition: color 300ms;
+  }
+
+  .product-card:hover .product-card-title {
+    color: var(--color-primary-400);
+  }
+
+  .product-card-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-500);
+    margin: 0.75rem 0;
+  }
+
+  .product-card-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: rgb(30 215 96 / 0.2);
+    color: var(--color-primary-400);
+    backdrop-filter: blur(4px);
+  }
+
+  .product-card-status-available {
+    background-color: rgb(30 215 96 / 0.2);
+    color: var(--color-primary-400);
+  }
+
+  .product-card-status-rented {
+    background-color: var(--color-surface-700);
+    color: var(--color-text-muted);
+  }
+
+  /* ===== Header ===== */
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    background-color: rgb(18 22 29 / 0.8);
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid var(--color-surface-border);
+  }
+
+  /* ===== Page Wrapper ===== */
+  .page-container {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0b0f14 0%, #12161d 60%, #181e27 100%);
+  }
+
+  /* ===== Modal ===== */
+  .modal {
+    background-color: var(--color-surface-900);
+    border-radius: 1rem;
+    border: 1px solid var(--color-surface-border);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 28rem;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgb(0 0 0 / 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+
+  /* ===== Inputs ===== */
+  .input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-surface-800);
+    border: 1px solid var(--color-surface-border);
+    border-radius: 0.5rem;
+    color: #fff;
+  }
+
+  .input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .input:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: var(--color-primary-500);
+  }
+
+  /* ===== Badges ===== */
+  .badge-success {
+    padding: 0.25rem 0.75rem;
+    background-color: rgb(30 215 96 / 0.2);
+    color: var(--color-primary-400);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+  }
+
+  .badge-error {
+    padding: 0.25rem 0.75rem;
+    background-color: rgb(239 68 68 / 0.2);
+    color: var(--color-error);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+  }
+
+  /* ===== Text ===== */
+  .text-heading {
+    color: var(--color-text-primary);
+  }
+
+  .text-subheading {
+    color: var(--color-text-secondary);
+  }
+
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
 body {
-  background: linear-gradient(135deg, #0a1a22 0%, #0f2530 50%, #163548 100%);
-  color: #EEEEFF;
-  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--color-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(180deg, #0b0f14 0%, #12161d 60%, #181e27 100%);
   min-height: 100vh;
 }
 
-/* Custom scrollbar */
+/* ============================================
+   Scrollbar (Spotify-style)
+   ============================================ */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #0f2530;
+  background: #0b0f14;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #28587B;
+  background: #2a3242;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #7F7CAF;
+  background: #3a4254;
+}
+
+/* ============================================
+   Selection
+   ============================================ */
+::selection {
+  background: #1db954;
+  color: #000;
 }

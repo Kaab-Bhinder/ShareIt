@@ -388,7 +388,7 @@ def update_booking_status(
         from app.models.dispute import Dispute, DisputeStatusEnum
         open_dispute = db.query(Dispute).filter(
             Dispute.booking_id == booking.booking_id,
-            Dispute.status == DisputeStatusEnum.OPEN
+            Dispute.status == "open"
         ).first()
         
         if open_dispute:

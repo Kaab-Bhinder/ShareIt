@@ -97,29 +97,29 @@ export default function WalletPage() {
 
   if (isLoading || !isLoggedIn) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#1a3a4a] via-[#28587B] to-[#163548] flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-[#28587B]/30 border-t-[#7F7CAF] rounded-full animate-spin" />
+      <div className="min-h-screen bg-gradient-to-br from-primary-surface via-primary-surface-light to-primary-surface-dark flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-primary-surface-light/30 border-t-[#4ade80] rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a3a4a] via-[#28587B] to-[#163548]">
+    <div className="min-h-screen bg-gradient-to-br from-primary-surface via-primary-surface-light to-primary-surface-dark">
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-[#1a3a4a]/90 border-b border-[#7F7CAF]/20">
+      <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-primary-surface/90 border-b border-[#4ade80]/20">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#7F7CAF] to-[#28587B] rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary-400 to-primary-surface-light rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-xl">S</span>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#9FB4C7] to-[#7F7CAF] bg-clip-text text-transparent">
+              <span className="text-2xl font-bold bg-gradient-to-r from-muted to-primary-400 bg-clip-text text-transparent">
                 ShareIt
               </span>
             </Link>
 
             <div className="flex items-center gap-4">
-              <Link href="/" className="px-4 py-2 text-[#9FB4C7] hover:text-[#EEEEFF] font-medium transition">Home</Link>
+              <Link href="/" className="px-4 py-2 text-muted hover:text-white font-medium transition">Home</Link>
               <ProfileDropdown />
             </div>
           </div>
@@ -129,47 +129,47 @@ export default function WalletPage() {
       <main className="pt-28 pb-12 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-[#EEEEFF]">Wallet</h1>
-            <p className="text-[#9FB4C7]">View balance, recent transactions, and top up</p>
+            <h1 className="text-3xl font-bold text-white">Wallet</h1>
+            <p className="text-muted">View balance, recent transactions, and top up</p>
           </div>
 
           {/* Balance + Topup */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div className="md:col-span-2 p-6 bg-[#163548]/30 backdrop-blur border border-[#28587B]/30 rounded-2xl">
+            <div className="md:col-span-2 p-6 bg-primary-surface-dark/30 backdrop-blur border border-primary-surface-light/30 rounded-2xl">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[#9FB4C7]">Current Balance</p>
-                  <div className="text-4xl font-bold bg-gradient-to-r from-[#9FB798] to-[#7F7CAF] bg-clip-text text-transparent">
+                  <p className="text-muted">Current Balance</p>
+                  <div className="text-4xl font-bold bg-gradient-to-r from-[#9FB798] to-primary-400 bg-clip-text text-transparent">
                     {wallet ? `PKR ${wallet.balance.toFixed(2)}` : "PKR 0.00"}
                   </div>
                 </div>
-                <div className="px-3 py-1 bg-[#28587B]/30 text-[#9FB4C7] text-sm rounded-full border border-[#28587B]/50">{wallet?.currency || "INR"}</div>
+                <div className="px-3 py-1 bg-primary-surface-light/30 text-muted text-sm rounded-full border border-primary-surface-light/50">{wallet?.currency || "INR"}</div>
               </div>
             </div>
 
-            <div className="p-6 bg-[#163548]/30 backdrop-blur border border-[#28587B]/30 rounded-2xl">
-              <h3 className="text-lg font-semibold text-[#EEEEFF] mb-4">Top up Wallet</h3>
+            <div className="p-6 bg-primary-surface-dark/30 backdrop-blur border border-primary-surface-light/30 rounded-2xl">
+              <h3 className="text-lg font-semibold text-white mb-4">Top up Wallet</h3>
               {error && (
                 <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">{error}</div>
               )}
               <form onSubmit={submitTopup} className="space-y-3">
                 <div>
-                  <label className="block text-sm font-medium text-[#9FB4C7] mb-2">Amount (PKR)</label>
+                  <label className="block text-sm font-medium text-muted mb-2">Amount (PKR)</label>
                   <input
                     type="number"
                     min={1}
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className="w-full px-4 py-3 bg-[#163548]/50 border border-[#28587B]/50 rounded-xl text-[#EEEEFF] placeholder-[#9FB4C7]/50 focus:outline-none focus:ring-2 focus:ring-[#7F7CAF]"
+                    className="w-full px-4 py-3 bg-primary-surface-dark/50 border border-primary-surface-light/50 rounded-xl text-white placeholder-muted/50 focus:outline-none focus:ring-2 focus:ring-primary-400"
                     placeholder="1000"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#9FB4C7] mb-2">Payment Method</label>
+                  <label className="block text-sm font-medium text-muted mb-2">Payment Method</label>
                   <select
                     value={method}
                     onChange={(e) => setMethod(e.target.value)}
-                    className="w-full px-4 py-3 bg-[#163548]/50 border border-[#28587B]/50 rounded-xl text-[#EEEEFF] focus:outline-none"
+                    className="w-full px-4 py-3 bg-primary-surface-dark/50 border border-primary-surface-light/50 rounded-xl text-white focus:outline-none"
                   >
                     <option value="easypaisa">Easypaisa</option>
                     <option value="jazzcash">JazzCash</option>
@@ -180,7 +180,7 @@ export default function WalletPage() {
                 <button
                   type="submit"
                   disabled={topupLoading}
-                  className="w-full py-3 bg-gradient-to-r from-[#7F7CAF] to-[#28587B] text-white font-semibold rounded-xl transition disabled:opacity-50"
+                  className="w-full py-3 bg-gradient-to-r from-primary-400 to-primary-surface-light text-white font-semibold rounded-xl transition disabled:opacity-50"
                 >
                   {topupLoading ? "Processing..." : "Add Money"}
                 </button>
@@ -189,28 +189,28 @@ export default function WalletPage() {
           </div>
 
           {/* Recent Transactions */}
-          <div className="p-6 bg-[#163548]/30 backdrop-blur border border-[#28587B]/30 rounded-2xl">
-            <h3 className="text-lg font-semibold text-[#EEEEFF] mb-4">Recent Transactions</h3>
+          <div className="p-6 bg-primary-surface-dark/30 backdrop-blur border border-primary-surface-light/30 rounded-2xl">
+            <h3 className="text-lg font-semibold text-white mb-4">Recent Transactions</h3>
             {loading ? (
               <div className="flex justify-center py-10">
-                <div className="w-10 h-10 border-4 border-[#28587B]/30 border-t-[#7F7CAF] rounded-full animate-spin" />
+                <div className="w-10 h-10 border-4 border-primary-surface-light/30 border-t-[#4ade80] rounded-full animate-spin" />
               </div>
             ) : wallet && wallet.transactions.length > 0 ? (
               <div className="space-y-3">
                 {wallet.transactions.map((tx) => (
-                  <div key={tx.transaction_id} className="flex items-center justify-between p-4 bg-[#0f2530] rounded-xl border border-[#28587B]/30">
+                  <div key={tx.transaction_id} className="flex items-center justify-between p-4 bg-[#0f2530] rounded-xl border border-primary-surface-light/30">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">
                         {tx.type === "topup" ? "💰" : tx.type === "deposit" ? "📥" : tx.type === "refund" ? "🔁" : "⚠️"}
                       </span>
                       <div>
-                        <p className="text-[#EEEEFF] font-medium capitalize">{tx.type}</p>
-                        <p className="text-[#9FB4C7] text-sm">{tx.description || "—"}</p>
+                        <p className="text-white font-medium capitalize">{tx.type}</p>
+                        <p className="text-muted text-sm">{tx.description || "—"}</p>
                       </div>
                     </div>
                     <div className="text-right">
                       <p className="text-[#9FB798] font-semibold">PKR {tx.amount.toFixed(2)}</p>
-                      <p className="text-[#9FB4C7]/70 text-xs">{new Date(tx.created_at).toLocaleString()}</p>
+                      <p className="text-muted/70 text-xs">{new Date(tx.created_at).toLocaleString()}</p>
                     </div>
                   </div>
                 ))}
@@ -218,7 +218,7 @@ export default function WalletPage() {
             ) : (
               <div className="text-center py-10">
                 <div className="text-5xl mb-2">📭</div>
-                <p className="text-[#9FB4C7]">No transactions yet</p>
+                <p className="text-muted">No transactions yet</p>
               </div>
             )}
           </div>
